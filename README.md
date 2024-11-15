@@ -1,3 +1,4 @@
 # Animated-charts
 
-- An animated charts displaying a survey data from Nigeria. 
+- An animated charts displaying a survey data from Nigeria.
+- #
