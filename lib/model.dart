@@ -1,7 +1,7 @@
 
-class ChartData {
+class PlaceholderChartData {
   final String x;
   final double y;
 
-  ChartData(this.x, this.y);
+  PlaceholderChartData(this.x, this.y);
 }

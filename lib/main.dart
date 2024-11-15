@@ -28,22 +28,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<ChartData> chartData = [];
+  final List<PlaceholderChartData> chartData = [
+    PlaceholderChartData('a', 10),
+    PlaceholderChartData('b', 20),
+    PlaceholderChartData('c', 30),
+    PlaceholderChartData('d', 40),
+    PlaceholderChartData('e', 50)
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-    child: Container(
     child: SfCircularChart(
         series: <CircularSeries>[
         // Renders radial bar chart
-        RadialBarSeries<ChartData, String>(
+        RadialBarSeries<PlaceholderChartData, String>(
         dataSource: chartData,
-        xValueMapper: (ChartData data, _) => data.x,
-        yValueMapper: (ChartData data, _) => data.y
+        xValueMapper: (PlaceholderChartData data, _) => data.x,
+        yValueMapper: (PlaceholderChartData data, _) => data.y
     )
     ]
-    )
     )
     )
 
