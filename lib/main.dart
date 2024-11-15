@@ -39,18 +39,34 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-    child: SfCircularChart(
-        series: <CircularSeries>[
-        // Renders radial bar chart
-        RadialBarSeries<PlaceholderChartData, String>(
-        dataSource: chartData,
-        xValueMapper: (PlaceholderChartData data, _) => data.x,
-        yValueMapper: (PlaceholderChartData data, _) => data.y
+    child: Stack(
+      children: [
+        SfCircularChart(
+            series: <CircularSeries>[
+            // Renders radial bar chart
+            RadialBarSeries<PlaceholderChartData, String>(
+            dataSource: chartData,
+            xValueMapper: (PlaceholderChartData data, _) => data.x,
+            yValueMapper: (PlaceholderChartData data, _) => data.y
+        )
+        ]
+        ),
+        Center(
+          child: Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.pink)
+            ),
+            child: ClipOval(
+              child: Image.asset('assets/images/img3.png'),
+            ),
+          ),
+        )
+      ],
     )
-    ]
     )
-    )
-
     );
   }
 }
