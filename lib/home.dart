@@ -60,8 +60,7 @@ class _HomeState extends State<Home> {
                             yValueMapper: (Map<String, dynamic> data, _) => data['y'],
                             dataLabelSettings: DataLabelSettings(
                               isVisible: true,
-                              labelPosition: ChartDataLabelPosition.inside,
-                              //labelAlignment: ChartDataLabelAlignment.outer,
+                              //labelPosition: ChartDataLabelPosition.values.first,
                                 textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
                                 builder: (context, point, series, pointIdex, seriesIndex) {
                                 final xValue = point.x;
@@ -78,10 +77,10 @@ class _HomeState extends State<Home> {
                       width: 100,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: Colors.black)
+                          border: Border.all(color: Colors.pink)
                       ),
                       child: ClipOval(
-                        child: Image.asset('assets/images/img3.png'),
+                        child: Image.asset('assets/images/nigeria.png'),
                       ),
                     ),
                   )
