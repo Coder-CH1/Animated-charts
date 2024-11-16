@@ -1,6 +1,5 @@
-
-
 import 'package:dio/dio.dart';
+
 
 Future<void> fetchData() async {
   final dio = Dio();
