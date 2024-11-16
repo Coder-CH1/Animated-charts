@@ -29,11 +29,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final List<PlaceholderChartData> chartData = [
-    PlaceholderChartData('a', 10),
-    PlaceholderChartData('b', 20),
-    PlaceholderChartData('c', 30),
-    PlaceholderChartData('d', 40),
-    PlaceholderChartData('e', 50)
+    PlaceholderChartData('a', 50),
+    PlaceholderChartData('b', 100),
+    PlaceholderChartData('c', 150),
+    PlaceholderChartData('d', 200),
+    PlaceholderChartData('e', 300)
   ];
   @override
   Widget build(BuildContext context) {
