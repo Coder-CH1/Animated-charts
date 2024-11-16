@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+import 'home.dart';
 
-import 'model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,53 +19,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  final List<PlaceholderChartData> chartData = [
-    PlaceholderChartData('a', 50),
-    PlaceholderChartData('b', 100),
-    PlaceholderChartData('c', 150),
-    PlaceholderChartData('d', 200),
-    PlaceholderChartData('e', 300)
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-    child: Stack(
-      children: [
-        SfCircularChart(
-            series: <CircularSeries>[
-            // Renders radial bar chart
-            RadialBarSeries<PlaceholderChartData, String>(
-            dataSource: chartData,
-            xValueMapper: (PlaceholderChartData data, _) => data.x,
-            yValueMapper: (PlaceholderChartData data, _) => data.y
-        )
-        ]
-        ),
-        Center(
-          child: Container(
-            height: 100,
-            width: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.black)
-            ),
-            child: ClipOval(
-              child: Image.asset('assets/images/img3.png'),
-            ),
-          ),
-        )
-      ],
-    )
-    )
-    );
-  }
-}

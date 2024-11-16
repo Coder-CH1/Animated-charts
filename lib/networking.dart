@@ -1,15 +1,20 @@
+import 'package:animated_charts/model.dart';
 import 'package:dio/dio.dart';
 
-Future<void> fetchData() async {
+Future<WelcomeElement?> fetchAPI() async {
   final dio = Dio();
   try {
-    final response = await dio.get('');
+    final response = await dio.get('https://api.worldbank.org/v2/country/ng?format=json');
     if (response.statusCode == 200) {
-      return ;
+     List<dynamic> data = response.data[1];
+     if (data.isNotEmpty) {
+       return WelcomeElement.fromJson(data[0]);
+     }
     } else {
       throw Exception("failed to load data");
     }
   } catch (e) {
     throw Exception("Request error: $e");
   }
+  return null;
 }
