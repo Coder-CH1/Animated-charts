@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
             width: 100,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.pink)
+              border: Border.all(color: Colors.black)
             ),
             child: ClipOval(
               child: Image.asset('assets/images/img3.png'),
