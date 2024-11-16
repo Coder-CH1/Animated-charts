@@ -13,6 +13,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late WelcomeElement data;
   late List<Map<String, dynamic>> chartData = [];
+  late AnimationController _animationController;
+  late Animation<double> _sizeAnimation;
 
   @override
 //LIFE CYCLE
@@ -60,7 +62,6 @@ class _HomeState extends State<Home> {
                             yValueMapper: (Map<String, dynamic> data, _) => data['y'],
                             dataLabelSettings: DataLabelSettings(
                               isVisible: true,
-                              //labelPosition: ChartDataLabelPosition.values.first,
                                 textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
                                 builder: (context, point, series, pointIdex, seriesIndex) {
                                 final xValue = point.x;
@@ -89,5 +90,10 @@ class _HomeState extends State<Home> {
             )
         )
     );
+  }
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 }
