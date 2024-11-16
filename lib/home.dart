@@ -11,7 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late List<PlaceholderChartData> chartData = [];
+  late WelcomeElement data;
+  late List<Map<String, dynamic>> chartData = [];
 
   @override
 //LIFE CYCLE
@@ -22,14 +23,15 @@ class _HomeState extends State<Home> {
 
   Future<void> fetchData() async {
     try {
-      final data = await  fetchAPI();
-      if (data != null) {
+      final fetchData = await  fetchAPI();
+      if (fetchData != null) {
         setState(() {
+          data = fetchData;
           chartData = [
-            PlaceholderChartData('Region: ${data.region.value}', 50),
-            PlaceholderChartData('Income level: ${data.incomeLevel.value}', 100),
-            PlaceholderChartData('Capital: ${data.capitalCity}', 150),
-            PlaceholderChartData('Lending type: ${data.lendingType.value}', 200),
+           {'x': 'Region: ${data.region.value}', 'y': 50},
+            {'x':'Income level: ${data.incomeLevel.value}', 'y': 100},
+            {'x':'Capital: ${data.capitalCity}','y': 150},
+            {'x':'Lending type: ${data.lendingType.value}','y': 200},
           ];
         });
       }
@@ -45,12 +47,19 @@ class _HomeState extends State<Home> {
             child: Stack(
               children: [
                 SfCircularChart(
+                 // title: const ChartTitle(text: 'World Bank Data Overview for Nigeria'),
                     series: <CircularSeries>[
                       // Renders radial bar chart
-                      RadialBarSeries<PlaceholderChartData, String>(
+                      RadialBarSeries<Map<String, dynamic>, String>(
                           dataSource: chartData,
-                          xValueMapper: (PlaceholderChartData data, _) => data.x,
-                          yValueMapper: (PlaceholderChartData data, _) => data.y
+                          xValueMapper: (Map<String, dynamic> data, _) => data['x'],
+                          yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                          dataLabelSettings: const DataLabelSettings(
+                            isVisible: true,
+                            labelPosition: ChartDataLabelPosition.inside,
+                            //labelAlignment: ChartDataLabelAlignment.outer,
+                            textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink)
+                          ),
                       )
                     ]
                 ),
