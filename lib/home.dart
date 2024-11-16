@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
   late WelcomeElement data;
   late List<Map<String, dynamic>> chartData = [];
   late AnimationController _animationController;
@@ -21,6 +21,19 @@ class _HomeState extends State<Home> {
   void initState(){
     super.initState();
     fetchData();
+    
+    _animationController = AnimationController(
+        vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+
+    _sizeAnimation = Tween<double>(begin: 10.0, end: 100.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+    _animationController.forward();
   }
 
   Future<void> fetchData() async {
