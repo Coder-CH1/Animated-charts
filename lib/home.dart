@@ -54,11 +54,16 @@ class _HomeState extends State<Home> {
                           dataSource: chartData,
                           xValueMapper: (Map<String, dynamic> data, _) => data['x'],
                           yValueMapper: (Map<String, dynamic> data, _) => data['y'],
-                          dataLabelSettings: const DataLabelSettings(
+                          dataLabelSettings: DataLabelSettings(
                             isVisible: true,
                             labelPosition: ChartDataLabelPosition.inside,
                             //labelAlignment: ChartDataLabelAlignment.outer,
-                            textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink)
+                              textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
+                              builder: (context, point, series, pointIdex, seriesIndex) {
+                              final xValue = point.x;
+                              final yValue = point.y;
+                              return Text('$xValue: $yValue');
+                              },
                           ),
                       )
                     ]
