@@ -67,11 +67,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               child: Stack(
                 children: [
                   AnimatedBuilder(
-              animation: _animationController,
+              animation: _sizeAnimation,
                     builder: (context, child) {
-                       return Transform.scale(
-                         scale: _sizeAnimation.value,
-                         child: SfCircularChart(
+                         return SfCircularChart(
                             title: const ChartTitle(
                             text: 'World Bank Data Overview for Nigeria',
                                                ),
@@ -80,7 +78,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                                RadialBarSeries<Map<String, dynamic>, String>(
                                                dataSource: chartData,
                                                xValueMapper: (Map<String, dynamic> data, _) => data['x'],
-                                               yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                                               yValueMapper: (Map<String, dynamic> data, _) => data['y'] * _sizeAnimation.value,
                                                dataLabelSettings: DataLabelSettings(
                                                isVisible: true,
                                                textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
@@ -93,8 +91,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                                ,
                                                )
                                                ]
-                                               ),
-                       );
+                                               );
+                       //);
                     }
                   ),
                   Center(
