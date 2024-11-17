@@ -3,6 +3,7 @@ import 'dart:convert';
 //
 //     final welcome = welcomeFromJson(jsonString);
 
+//DECODED DATA
 List<dynamic> welcomeFromJson(String str) => List<dynamic>.from(json.decode(str).map((x) => x));
 
 String welcomeToJson(List<dynamic> data) => json.encode(List<dynamic>.from(data.map((x) => x)));
