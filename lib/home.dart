@@ -24,16 +24,19 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     
     _animationController = AnimationController(
         vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 2000),
     );
 
-    _sizeAnimation = Tween<double>(begin: 10.0, end: 100.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
+    _sizeAnimation = Tween<double>(begin: 1, end: 1.2).animate(_animationController);
     _animationController.forward();
+
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _animationController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        _animationController.forward();
+      }
+    });
   }
 
   Future<void> fetchData() async {
@@ -66,29 +69,32 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   AnimatedBuilder(
               animation: _animationController,
                     builder: (context, child) {
-                      return SfCircularChart(
-                          title: const ChartTitle(
-                          text: 'World Bank Data Overview for Nigeria',
-                      ),
-                      series: <CircularSeries>[
-                      // Renders radial bar chart
-                      RadialBarSeries<Map<String, dynamic>, String>(
-                      dataSource: chartData,
-                      xValueMapper: (Map<String, dynamic> data, _) => data['x'],
-                      yValueMapper: (Map<String, dynamic> data, _) => data['y'] * _sizeAnimation.value,
-                      dataLabelSettings: DataLabelSettings(
-                      isVisible: true,
-                      textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
-                      builder: (context, point, series, pointIdex, seriesIndex) {
-                      final xValue = point.x;
-                      final yValue = point.y;
-                      return Text('$xValue: $yValue');
-                      },
-                      )
-                      ,
-                      )
-                      ]
-                      );
+                       return Transform.scale(
+                         scale: _sizeAnimation.value,
+                         child: SfCircularChart(
+                            title: const ChartTitle(
+                            text: 'World Bank Data Overview for Nigeria',
+                                               ),
+                                               series: <CircularSeries>[
+                                               // Renders radial bar chart
+                                               RadialBarSeries<Map<String, dynamic>, String>(
+                                               dataSource: chartData,
+                                               xValueMapper: (Map<String, dynamic> data, _) => data['x'],
+                                               yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                                               dataLabelSettings: DataLabelSettings(
+                                               isVisible: true,
+                                               textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
+                                               builder: (context, point, series, pointIdex, seriesIndex) {
+                                               final xValue = point.x;
+                                               final yValue = point.y;
+                                               return Text('$xValue: $yValue');
+                                               },
+                                               )
+                                               ,
+                                               )
+                                               ]
+                                               ),
+                       );
                     }
                   ),
                   Center(
