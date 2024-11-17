@@ -27,7 +27,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 2000),
     );
 
-    _sizeAnimation = Tween<double>(begin: 1, end: 1.2).animate(_animationController);
+    _sizeAnimation = Tween<double>(begin: 0.5, end: 1.2).animate(_animationController);
     _animationController.forward();
 
     _animationController.addStatusListener((status) {
@@ -78,7 +78,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                                RadialBarSeries<Map<String, dynamic>, String>(
                                                dataSource: chartData,
                                                xValueMapper: (Map<String, dynamic> data, _) => data['x'],
-                                               yValueMapper: (Map<String, dynamic> data, _) => data['y'] * _sizeAnimation.value,
+                                               yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                                               radius: '${_sizeAnimation.value}',
                                                dataLabelSettings: DataLabelSettings(
                                                isVisible: true,
                                                textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
