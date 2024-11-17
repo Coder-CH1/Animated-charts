@@ -72,28 +72,26 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                          return SfCircularChart(
                             title: const ChartTitle(
                             text: 'World Bank Data Overview for Nigeria',
-                                               ),
-                                               series: <CircularSeries>[
-                                               // Renders radial bar chart
-                                               RadialBarSeries<Map<String, dynamic>, String>(
-                                               dataSource: chartData,
-                                               xValueMapper: (Map<String, dynamic> data, _) => data['x'],
-                                               yValueMapper: (Map<String, dynamic> data, _) => data['y'],
-                                               radius: '${_sizeAnimation.value}',
-                                               dataLabelSettings: DataLabelSettings(
-                                               isVisible: true,
-                                               textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
-                                               builder: (context, point, series, pointIdex, seriesIndex) {
-                                               final xValue = point.x;
-                                               final yValue = point.y;
-                                               return Text('$xValue: $yValue');
-                                               },
-                                               )
-                                               ,
-                                               )
-                                               ]
-                                               );
-                       //);
+                            ),
+                             series: <CircularSeries>[
+                               // Renders radial bar chart
+                               RadialBarSeries<Map<String, dynamic>, String>(
+                                 dataSource: chartData,
+                                 xValueMapper: (Map<String, dynamic> data, _) => data['x'],
+                                 yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                                 radius: '${_sizeAnimation.value}',
+                                 dataLabelSettings: DataLabelSettings(
+                                   isVisible: true,
+                                   textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
+                                   builder: (context, point, series, pointIdex, seriesIndex) {
+                                     final xValue = point.x;
+                                     final yValue = point.y;
+                                     return Text('$xValue: $yValue');
+                                     },
+                                 ),
+                               )
+                             ]
+                         );
                     }
                   ),
                   Center(
