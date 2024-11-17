@@ -75,7 +75,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       RadialBarSeries<Map<String, dynamic>, String>(
                       dataSource: chartData,
                       xValueMapper: (Map<String, dynamic> data, _) => data['x'],
-                      yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                      yValueMapper: (Map<String, dynamic> data, _) => data['y'] * _sizeAnimation.value,
                       dataLabelSettings: DataLabelSettings(
                       isVisible: true,
                       textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
