@@ -38,7 +38,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       }
     });
   }
-
+//FETCH DATA FROM API
   Future<void> fetchData() async {
     try {
       final fetchData = await  fetchAPI();
