@@ -114,6 +114,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
   @override
+ //DISPOSING OF THE CONTROLLER
   void dispose() {
     _animationController.dispose();
     super.dispose();
