@@ -16,8 +16,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
 
-  @override
 //LIFE CYCLE
+  @override
   void initState(){
     super.initState();
     fetchData();
@@ -100,7 +100,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       width: 100,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: Colors.pink)
+                          border: Border.all(color: Colors.green)
                       ),
                       child: ClipOval(
                         child: Image.asset('assets/images/nigeria.png'),
