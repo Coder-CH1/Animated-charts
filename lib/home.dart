@@ -14,7 +14,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late WelcomeElement data;
   late List<Map<String, dynamic>> chartData = [];
   late AnimationController _animationController;
-  late Animation<double> _sizeAnimation;
+  late Animation<double> _animation;
 
   @override
 //LIFE CYCLE
@@ -27,7 +27,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 2000),
     );
 
-    _sizeAnimation = Tween<double>(begin: 0.5, end: 1.2).animate(_animationController);
+    _animation = Tween<double>(begin: 0.5, end: 1.2).animate(_animationController);
     _animationController.forward();
 
     _animationController.addStatusListener((status) {
@@ -67,7 +67,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               child: Stack(
                 children: [
                   AnimatedBuilder(
-              animation: _sizeAnimation,
+                    animation: _animation,
                     builder: (context, child) {
                          return SfCircularChart(
                             title: const ChartTitle(
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                  dataSource: chartData,
                                  xValueMapper: (Map<String, dynamic> data, _) => data['x'],
                                  yValueMapper: (Map<String, dynamic> data, _) => data['y'],
-                                 radius: '${_sizeAnimation.value}',
+                                 radius: '${_animation.value}',
                                  dataLabelSettings: DataLabelSettings(
                                    isVisible: true,
                                    textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
