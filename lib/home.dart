@@ -5,7 +5,6 @@ import 'Networking/model.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
-
   @override
   State<Home> createState() => _HomeState();
 }
@@ -38,7 +37,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       }
     });
   }
-//FETCH DATA FROM API
+//METHOD TO CALL THE METHOD FOR FETCHING THE API
   Future<void> fetchData() async {
     try {
       final fetchData = await  fetchAPI();
