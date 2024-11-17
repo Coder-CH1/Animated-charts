@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'networking.dart';
-import 'model.dart';
+import 'Networking/networking.dart';
+import 'Networking/model.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

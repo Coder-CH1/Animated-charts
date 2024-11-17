@@ -1,4 +1,4 @@
-import 'package:animated_charts/model.dart';
+import 'package:animated_charts/Networking/model.dart';
 import 'package:dio/dio.dart';
 
 Future<WelcomeElement?> fetchAPI() async {
