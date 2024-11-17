@@ -21,12 +21,12 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   void initState(){
     super.initState();
     fetchData();
-    
+  //INITIALIZE ANIMATION CONTROLLER
     _animationController = AnimationController(
         vsync: this,
       duration: const Duration(milliseconds: 2000),
     );
-
+  //INITIALIZE ANIMATION
     _animation = Tween<double>(begin: 0.5, end: 1.2).animate(_animationController);
     _animationController.forward();
 
