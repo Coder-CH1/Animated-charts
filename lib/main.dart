@@ -145,13 +145,3 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   }
 }
 
-// class AnimatedRadialBarSeries extends StatelessWidget {
-//   final Animation<double> animation;
-//   final List<Map<String, dynamic>> chartData;
-//    const AnimatedRadialBarSeries({super.key, required this.animation, required this.chartData});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return;
-//   }
-// }
