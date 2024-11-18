@@ -93,7 +93,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               text: 'World Bank Data Overview for Nigeria',
                             ),
                             series: <CircularSeries>[
-
                               // Renders radial bar chart
                               RadialBarSeries<Map<String, dynamic>, String>(
                                 dataSource: chartData,
