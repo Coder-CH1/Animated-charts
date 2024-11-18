@@ -3,7 +3,6 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'Networking/networking.dart';
 import 'Networking/model.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
