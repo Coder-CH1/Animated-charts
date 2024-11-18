@@ -20,11 +20,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   void initState(){
     super.initState();
     fetchData();
+
   //INITIALIZE ANIMATION CONTROLLER
     _animationController = AnimationController(
         vsync: this,
       duration: const Duration(milliseconds: 2000),
     );
+
   //INITIALIZE ANIMATION
     _animation = Tween<double>(begin: 0.5, end: 1.2).animate(_animationController);
     _animationController.forward();
@@ -37,6 +39,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       }
     });
   }
+
 //METHOD TO CALL THE METHOD FOR FETCHING THE API
   Future<void> fetchData() async {
     try {
@@ -73,6 +76,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             text: 'World Bank Data Overview for Nigeria',
                             ),
                              series: <CircularSeries>[
+
                                // Renders radial bar chart
                                RadialBarSeries<Map<String, dynamic>, String>(
                                  dataSource: chartData,
@@ -112,8 +116,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         )
     );
   }
+
+//DISPOSING OF THE CONTROLLER
   @override
- //DISPOSING OF THE CONTROLLER
   void dispose() {
     _animationController.dispose();
     super.dispose();
