@@ -99,7 +99,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 dataSource: chartData,
                                 xValueMapper: (Map<String, dynamic> data, _) => data['x'],
                                 yValueMapper: (Map<String, dynamic> data, _) => data['y'],
-                                radius: '${_animation.value}',
+                                //radius: '${_animation.value}',
                                 dataLabelSettings: DataLabelSettings(
                                   isVisible: true,
                                   textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
