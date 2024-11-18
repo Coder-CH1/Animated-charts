@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'Networking/networking.dart';
@@ -41,11 +42,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     //INITIALIZE ANIMATION CONTROLLER
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2000),
-    );
+      duration: const Duration(seconds: 5),
+    )..repeat();
 
     //INITIALIZE ANIMATION
-    _animation = Tween<double>(begin: 0.5, end: 1.2).animate(_animationController);
+    _animation = Tween<double>(begin: 0, end: 360).animate(_animationController);
     _animationController.forward();
 
     _animationController.addStatusListener((status) {
@@ -88,28 +89,31 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   AnimatedBuilder(
                       animation: _animation,
                       builder: (context, child) {
-                        return SfCircularChart(
-                            title: const ChartTitle(
-                              text: 'World Bank Data Overview for Nigeria',
+                        return Transform.rotate(
+                          angle: _animation.value * pi / 180,
+                          child: SfCircularChart(
+                              title: const ChartTitle(
+                                text: 'World Bank Data Overview for Nigeria',
+                              ),
+                              series: <CircularSeries>[
+                                // Renders radial bar chart
+                            RadialBarSeries<Map<String, dynamic>, String>(
+                              dataSource: chartData,
+                              xValueMapper: (Map<String, dynamic> data, _) => data['x'],
+                            yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                            //strokeWidth: _animation.value * 200,
+                            dataLabelSettings: DataLabelSettings(
+                              isVisible: true,
+                              textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
+                              builder: (context, point, series, pointIdex, seriesIndex) {
+                                final xValue = point.x;
+                                final yValue = point.y;
+                                return Text('$xValue: $yValue');
+                              },
                             ),
-                            series: <CircularSeries>[
-                              // Renders radial bar chart
-                              RadialBarSeries<Map<String, dynamic>, String>(
-                                dataSource: chartData,
-                                xValueMapper: (Map<String, dynamic> data, _) => data['x'],
-                                yValueMapper: (Map<String, dynamic> data, _) => data['y'],
-                                radius: '${_animation.value * 100}%',
-                                dataLabelSettings: DataLabelSettings(
-                                  isVisible: true,
-                                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
-                                  builder: (context, point, series, pointIdex, seriesIndex) {
-                                    final xValue = point.x;
-                                    final yValue = point.y;
-                                    return Text('$xValue: $yValue');
-                                  },
-                                ),
-                              )
-                            ]
+                          ),
+                              ],
+                          ),
                         );
                       }
                   ),
@@ -140,3 +144,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     super.dispose();
   }
 }
+
+// class AnimatedRadialBarSeries extends StatelessWidget {
+//   final Animation<double> animation;
+//   final List<Map<String, dynamic>> chartData;
+//    const AnimatedRadialBarSeries({super.key, required this.animation, required this.chartData});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return;
+//   }
+// }
