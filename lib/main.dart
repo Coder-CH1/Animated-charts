@@ -93,7 +93,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           angle: _animation.value * pi / 180,
                           child: SfCircularChart(
                               title: const ChartTitle(
-                                text: 'World Bank Data Overview for Nigeria',
+                                //text: 'World Bank Data Overview for Nigeria',
                               ),
                               series: <CircularSeries>[
                                 /// Renders radial bar chart
@@ -101,6 +101,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               dataSource: chartData,
                               xValueMapper: (Map<String, dynamic> data, _) => data['x'],
                             yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                            //animationDuration: 2000,
                             dataLabelSettings: DataLabelSettings(
                               isVisible: true,
                               textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
