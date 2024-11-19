@@ -101,7 +101,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         xValueMapper: (Map<String, dynamic> data, _) => data['x'],
                       yValueMapper: (Map<String, dynamic> data, _) => data['y'],
                       pointRadiusMapper: (Map<String, dynamic> data, _) => data['x'],
-                      //pointColorMapper: (Map<String, dynamic> data, _) => data.color,
                       innerRadius: '50%',
                       radius: '100%',
                       useSeriesColor: true,
