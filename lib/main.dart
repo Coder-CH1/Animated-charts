@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'Networking/networking.dart';
@@ -49,13 +48,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     _animation = Tween<double>(begin: 0, end: 360).animate(_animationController);
     _animationController.forward();
 
-    _animationController.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        _animationController.reverse();
-      } else if (status == AnimationStatus.dismissed) {
-        _animationController.forward();
-      }
-    });
+    // _animationController.addStatusListener((status) {
+    //   if (status == AnimationStatus.completed) {
+    //     _animationController.reverse();
+    //   } else if (status == AnimationStatus.dismissed) {
+    //     _animationController.forward();
+    //   }
+    // });
   }
 
 ///METHOD TO CALL THE METHOD FOR FETCHING THE API
@@ -86,36 +85,29 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               padding: const EdgeInsets.only(top: 50),
               child: Stack(
                 children: [
-                  AnimatedBuilder(
-                      animation: _animation,
-                      builder: (context, child) {
-                        return Transform.rotate(
-                          angle: _animation.value * pi / 180,
-                          child: SfCircularChart(
-                              title: const ChartTitle(
-                                //text: 'World Bank Data Overview for Nigeria',
-                              ),
-                              series: <CircularSeries>[
-                                /// Renders radial bar chart
-                            RadialBarSeries<Map<String, dynamic>, String>(
-                              dataSource: chartData,
-                              xValueMapper: (Map<String, dynamic> data, _) => data['x'],
-                            yValueMapper: (Map<String, dynamic> data, _) => data['y'],
-                            //animationDuration: 2000,
-                            dataLabelSettings: DataLabelSettings(
-                              isVisible: true,
-                              textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
-                              builder: (context, point, series, pointIdex, seriesIndex) {
-                                final xValue = point.x;
-                                final yValue = point.y;
-                                return Text('$xValue: $yValue');
-                              },
-                            ),
-                          ),
-                              ],
-                          ),
-                        );
-                      }
+                  SfCircularChart(
+                      title: const ChartTitle(
+                        text: 'World Bank Data Overview for Nigeria',
+                      ),
+                      series: <CircularSeries>[
+                        /// Renders radial bar chart
+                    RadialBarSeries<Map<String, dynamic>, String>(
+                      dataSource: chartData,
+                      xValueMapper: (Map<String, dynamic> data, _) => data['x'],
+                    yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                    //animationDuration: _animation.value,
+                    animationDelay: 500,
+                    dataLabelSettings: DataLabelSettings(
+                      isVisible: true,
+                      textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
+                      builder: (context, point, series, pointIdex, seriesIndex) {
+                        final xValue = point.x;
+                        final yValue = point.y;
+                        return Text('$xValue: $yValue');
+                      },
+                    ),
+                  ),
+                      ],
                   ),
                   Center(
                     child: Container(
