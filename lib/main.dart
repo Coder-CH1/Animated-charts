@@ -96,11 +96,19 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           /// Renders radial bar chart
                       RadialBarSeries<Map<String, dynamic>, String>(
                         dataSource: chartData,
-                        xValueMapper: (Map<String, dynamic> data, _) => '${_animation.value}',
+                        //maximumValue: 6000,
+                        gap: '3%',
+                        xValueMapper: (Map<String, dynamic> data, _) => data['x'],
                       yValueMapper: (Map<String, dynamic> data, _) => data['y'],
+                      pointRadiusMapper: (Map<String, dynamic> data, _) => data['x'],
+                      //pointColorMapper: (Map<String, dynamic> data, _) => data.color,
                       innerRadius: '50%',
                       radius: '100%',
-                      animationDuration: 1000,
+                      useSeriesColor: true,
+                      trackOpacity: 0.3,
+                      opacity: 1.0,
+                      cornerStyle: CornerStyle.bothCurve,
+                      animationDuration: 0,
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
                         textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
