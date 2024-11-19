@@ -45,16 +45,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     )..repeat();
 
     ///INITIALIZE ANIMATION
-    _animation = Tween<double>(begin: 0, end: 360).animate(_animationController);
+    _animation = Tween<double>(begin: 0, end: 200).animate(_animationController);
     _animationController.forward();
 
-    // _animationController.addStatusListener((status) {
-    //   if (status == AnimationStatus.completed) {
-    //     _animationController.reverse();
-    //   } else if (status == AnimationStatus.dismissed) {
-    //     _animationController.forward();
-    //   }
-    // });
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _animationController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        _animationController.forward();
+      }
+    });
   }
 
 ///METHOD TO CALL THE METHOD FOR FETCHING THE API
@@ -96,11 +96,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           /// Renders radial bar chart
                       RadialBarSeries<Map<String, dynamic>, String>(
                         dataSource: chartData,
-                        xValueMapper: (Map<String, dynamic> data, _) => data['x'],
+                        xValueMapper: (Map<String, dynamic> data, _) => '${_animation.value}',
                       yValueMapper: (Map<String, dynamic> data, _) => data['y'],
-
-                      //animationDuration: _animation.value,
-                      animationDelay: 500,
+                      innerRadius: '50%',
+                      radius: '100%',
+                      animationDuration: 1000,
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
                         textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
