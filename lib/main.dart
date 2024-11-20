@@ -50,7 +50,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        if (_animationCount < 4) {
+        if (_animationCount < 5) {
           _animationController.reverse();
           setState(() {
             _animationCount++;
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           _animationController.stop();
         }
       } else if (status == AnimationStatus.dismissed) {
-        if (_animationCount < 4) {
+        if (_animationCount < 5) {
           _animationController.forward();
         }
       }
