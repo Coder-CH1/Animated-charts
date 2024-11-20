@@ -109,7 +109,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         gap: '3%',
                         xValueMapper: (Map<String, dynamic> data, _) => data['x'],
                       yValueMapper: (Map<String, dynamic> data, _) => data['y'],
-                      pointRadiusMapper: (Map<String, dynamic> data, _) => data['x'],
+                      //pointRadiusMapper: (Map<String, dynamic> data, _) => data['x'],
                       radius: '100%',
                       trackOpacity: 0.3,
                       opacity: 1.0,
