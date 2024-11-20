@@ -114,7 +114,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       trackOpacity: 0.3,
                       opacity: 1.0,
                       cornerStyle: CornerStyle.bothCurve,
-                      animationDuration: 0,
+                      //animationDuration: 0,
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
                         textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
