@@ -107,7 +107,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       RadialBarSeries<Map<String, dynamic>, String>(
                         dataSource: chartData,
                         maximumValue: _animation.value,
-                        gap: '3%',
+                        gap: '10%',
                         xValueMapper: (Map<String, dynamic> data, _) => data['x'],
                       yValueMapper: (Map<String, dynamic> data, _) => data['y'],
                       radius: '100%',
