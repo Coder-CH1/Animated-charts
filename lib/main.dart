@@ -100,6 +100,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     return SfCircularChart(
                         title: const ChartTitle(
                           text: 'World Bank Data Overview for Nigeria',
+                          textStyle: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         series: <CircularSeries>[
                           /// Renders radial bar chart
@@ -130,8 +131,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                   Center(
                     child: Container(
-                      height: 120,
-                      width: 120,
+                      height: 100,
+                      width: 100,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.green)
