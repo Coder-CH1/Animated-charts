@@ -41,7 +41,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 /// INITIALIZE ANIMATION CONTROLLER
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 60),
     );
 
 /// INITIALIZE ANIMATION
@@ -50,7 +50,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        if (_animationCount < 2) {
+        if (_animationCount < 4) {
           _animationController.reverse();
           setState(() {
             _animationCount++;
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           _animationController.stop();
         }
       } else if (status == AnimationStatus.dismissed) {
-        if (_animationCount < 2) {
+        if (_animationCount < 4) {
           _animationController.forward();
         }
       }
@@ -114,7 +114,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       trackOpacity: 0.3,
                       opacity: 1.0,
                       cornerStyle: CornerStyle.bothCurve,
-                      //animationDuration: 0,
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
                         textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
