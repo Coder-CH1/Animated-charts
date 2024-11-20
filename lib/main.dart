@@ -31,6 +31,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late List<Map<String, dynamic>> chartData = [];
   late AnimationController _animationController;
   late Animation<double> _animation;
+  int _animationCount = 0;
 
 ///LIFE CYCLE
   @override
@@ -42,7 +43,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 5),
-    )..reverse();
+    );
 
     ///INITIALIZE ANIMATION
     _animation = Tween<double>(begin: 0, end: 200).animate(_animationController);
@@ -50,9 +51,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        _animationController.reverse();
+        if (_animationCount < 2) {
+          _animationController.reverse();
+          setState(() {
+            _animationCount++;
+          });
+        } else {
+          _animationController.stop();
+        }
       } else if (status == AnimationStatus.dismissed) {
-        _animationController.forward();
+        if (_animationCount < 2) {
+          _animationController.forward();
+        }
       }
     });
   }
@@ -66,9 +76,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           data = fetchData;
           chartData = [
             {'x': 'Region: ${data.region.value}', 'y': 50},
-            {'x':'Income level: ${data.incomeLevel.value}', 'y': 100},
-            {'x':'Capital: ${data.capitalCity}','y': 150},
-            {'x':'Lending type: ${data.lendingType.value}','y': 200},
+            {'x':'Income level: ${data.incomeLevel.value}', 'y': 80},
+            {'x':'Capital: ${data.capitalCity}','y': 120},
+            {'x':'Lending type: ${data.lendingType.value}','y': 160},
           ];
         });
       }
@@ -122,8 +132,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                   Center(
                     child: Container(
-                      height: 150,
-                      width: 150,
+                      height: 100,
+                      width: 100,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.green)
