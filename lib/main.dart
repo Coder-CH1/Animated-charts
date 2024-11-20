@@ -33,18 +33,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late Animation<double> _animation;
   int _animationCount = 0;
 
-///LIFE CYCLE
+/// LIFE CYCLE
   @override
   void initState(){
     super.initState();
     fetchData();
-///INITIALIZE ANIMATION CONTROLLER
+/// INITIALIZE ANIMATION CONTROLLER
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 5),
     );
 
-///INITIALIZE ANIMATION
+/// INITIALIZE ANIMATION
     _animation = Tween<double>(begin: 0, end: 200).animate(_animationController);
     _animationController.forward();
 
@@ -66,7 +66,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     });
   }
 
-///METHOD TO CALL THE METHOD FOR FETCHING THE API
+/// METHOD TO CALL THE METHOD FOR FETCHING THE API
   Future<void> fetchData() async {
     try {
       final fetchData = await  fetchAPI();
@@ -149,7 +149,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 
-///DISPOSING OF THE CONTROLLER
+/// DISPOSING OF THE CONTROLLER
   @override
   void dispose() {
     _animationController.dispose();
