@@ -74,9 +74,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           data = fetchData;
           chartData = [
             {'x': 'Region: ${data.region.value}', 'y': 50},
-            {'x':'Income level: ${data.incomeLevel.value}', 'y': 80},
+            {'x':'Income Level: ${data.incomeLevel.value}', 'y': 80},
             {'x':'Capital: ${data.capitalCity}','y': 120},
-            {'x':'Lending type: ${data.lendingType.value}','y': 160},
+            {'x':'Lending Type: ${data.lendingType.value}','y': 160},
           ];
         });
       }
