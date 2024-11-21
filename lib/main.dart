@@ -102,7 +102,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           textStyle: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         series: <CircularSeries>[
-                          /// RENDERS RADIAL BAR CHART
+                          /// RENDERS RADIAL BAR CHARTS
                       RadialBarSeries<Map<String, dynamic>, String>(
                         dataSource: chartData,
                         maximumValue: _animation.value,
