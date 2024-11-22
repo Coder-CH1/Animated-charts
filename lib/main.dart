@@ -42,7 +42,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(seconds: 60),
     );
-
 ///INITIALIZE ANIMATION
     _animation = Tween<double>(begin: 0, end: 200).animate(_animationController);
     _animationController.forward();
