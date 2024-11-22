@@ -84,6 +84,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       throw Exception("failed to load data $e");
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
