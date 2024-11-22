@@ -9,7 +9,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-/// THIS WIDGET IS THE ROOT OF YOUR APPLICATION.
+///THIS WIDGET IS THE ROOT OF YOUR APPLICATION.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -32,18 +32,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   late Animation<double> _animation;
   int _animationCount = 0;
 
-/// LIFE CYCLE
+///LIFE CYCLE
   @override
   void initState(){
     super.initState();
     fetchData();
-/// INITIALIZE ANIMATION CONTROLLER
+///INITIALIZE ANIMATION CONTROLLER
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 60),
     );
 
-/// INITIALIZE ANIMATION
+///INITIALIZE ANIMATION
     _animation = Tween<double>(begin: 0, end: 200).animate(_animationController);
     _animationController.forward();
 
