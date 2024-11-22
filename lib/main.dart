@@ -80,8 +80,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           ];
         });
       }
-    } catch (e) {
-      throw Exception("failed to load data $e");
+    } catch (err) {
+      throw Exception("failed to load data $err");
     }
   }
 
