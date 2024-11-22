@@ -115,7 +115,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       cornerStyle: CornerStyle.bothCurve,
                       dataLabelSettings: DataLabelSettings(
                         isVisible: true,
-                        textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.pink),
+                        textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                         builder: (context, point, series, pointIdex, seriesIndex) {
                           final xValue = point.x;
                           final yValue = point.y;
