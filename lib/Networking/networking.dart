@@ -1,7 +1,7 @@
 import 'package:animated_charts/Networking/model.dart';
 import 'package:dio/dio.dart';
 
-///ASYNCHRONOUS METHOD FOR NETWORKING
+/// ASYNCHRONOUS METHOD FOR NETWORKING
 Future<WelcomeElement?> fetchAPI() async {
   final dio = Dio();
   try {
