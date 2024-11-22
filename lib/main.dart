@@ -9,6 +9,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
 ///THIS WIDGET IS THE ROOT OF YOUR APPLICATION.
   @override
   Widget build(BuildContext context) {
